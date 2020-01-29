@@ -1,0 +1,17 @@
+import requests
+
+url = "https://eledo.online/api/RESTv1/Generate"
+
+querystring = {"Api-Key":"ai8e0r2xskkx_3hwmk4i862xqkkcrco6zdlmz","templateId":"5d7fdd1bbb82ab068d269e6e"}
+
+payload = {"templateId":"5d7fdd1bbb82ab068d269e6e","templateVersion":"18","file":{"Last":"Tkachenko","First":"Bogdan","id":"8888888", "eger":" ", "QR":" ", "id":" ", "Badge":" "}}
+headers = {
+    'Api-Key': "ai8e0r2xskkx_3hwmk4i862xqkkcrco6zdlmz",
+    'Content-Type': "application/json",
+    'cache-control': "no-cache",
+    }
+
+response = requests.request("POST", url, data=payload, headers=headers, params=querystring)
+
+print(response.text)
+:wqL::::::
