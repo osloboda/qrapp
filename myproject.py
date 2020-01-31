@@ -16,14 +16,41 @@ def parse():
 
 @celery.task(name='app_route.process')
 def process(data):
-	pdfGEN(template=data['template'], Certificate=data['Certificate'], FirstName=data['First'], LastName=data['Last'], product=data['product'])
-	if (data['printer'] == "First printer"):
-		print("OK1")
-		os.system("lpr -P EPSON-1 -# 1 /tmp/{}.pdf".format(data['Certificate'] + data['template']))
-	else:
-		print("OK2")
-		os.system("lpr -P EPSON-2 -# 1 /tmp/{}.pdf".format(data['Certificate'] + data['template']))
-	return "OK"
+	if data['tamplate'] == 'certificate1' or data['tamplate'] == 'certificate2' or data['tamplate'] == 'certificate3' or data['tamplate'] == 'certificate4':
+		pdfGEN(template=data['template'], Certificate=data['Certificate'], FirstName=data['First'], LastName=data['Last'], product="econom")
+		if (data['printer'] == "First printer"):
+			print("OK1")
+			os.system("lpr -P EPSON-1 -# 1 /tmp/{}.pdf".format(data['Certificate'] + data['template'] + "econom"))
+		else:
+			print("OK2")
+			os.system("lpr -P EPSON-2 -# 1 /tmp/{}.pdf".format(data['Certificate'] + data['template'] + "econom"))
+
+		if data["product"] == "standart" or data["product"] == "premium":
+			pdfGEN(template=data['template'], Certificate=data['Certificate'], FirstName=data['First'], LastName=data['Last'], product="standart")
+			if (data['printer'] == "First printer"):
+				print("OK1")
+				os.system("lpr -P EPSON-1 -# 1 /tmp/{}.pdf".format(data['Certificate'] + data['template'] + "standart"))
+			else:
+				print("OK2")
+				os.system("lpr -P EPSON-2 -# 1 /tmp/{}.pdf".format(data['Certificate'] + data['template'] + "standart"))
+		if data["product"] == "premium":
+			pdfGEN(template=data['template'], Certificate=data['Certificate'], FirstName=data['First'], LastName=data['Last'], product="premium")
+			if (data['printer'] == "First printer"):
+				print("OK1")
+				os.system("lpr -P EPSON-1 -# 1 /tmp/{}.pdf".format(data['Certificate'] + data['template'] + "premium"))
+			else:
+				print("OK2")
+				os.system("lpr -P EPSON-2 -# 1 /tmp/{}.pdf".format(data['Certificate'] + data['template'] + "premium"))
+
+	if data['tamplate'] == 'badge1' or data['template'] == 'badge2' or data['tamplate'] == 'badge3' or data['tamplate'] == 'badge4':
+		pdfGEN(template=data['template'], Certificate=data['Certificate'], FirstName=data['First'],LastName=data['Last'], product=data['product'])
+		if (data['printer'] == "First printer"):
+			print("OK1")
+			os.system("lpr -P EPSON-1 -# 1 /tmp/{}.pdf".format(data['Certificate'] + data['template'] + data['product']))
+		else:
+			print("OK2")
+			os.system("lpr -P EPSON-2 -# 1 /tmp/{}.pdf".format(data['Certificate'] + data['template'] + data['product']))
+
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0')

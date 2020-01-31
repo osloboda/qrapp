@@ -17,7 +17,7 @@ def pdfGEN(template, Certificate, LastName, FirstName, product):
     pdfmetrics.registerFont(TTFont('OpenSans', 'OpenSans-Regular.ttf'))
     pdfmetrics.registerFont(TTFont('DejaVuSans', 'DejaVuSansCondensed.ttf'))
     pdfmetrics.registerFont(TTFont('OpenSans2', 'OpenSans-Bold.ttf'))
-    c = canvas.Canvas('/tmp/{}.pdf'.format(Certificate + template), pagesize=A4, bottomup=False)  # alternatively use bottomup=False
+    c = canvas.Canvas('/tmp/{}.pdf'.format(str(Certificate) + str(template) + str(product)), pagesize=A4, bottomup=False)  # alternatively use bottomup=False
     width, height = A4
     c.setFillColorRGB(0,0,255)
 
