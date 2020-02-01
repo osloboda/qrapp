@@ -16,7 +16,7 @@ def parse():
 
 @celery.task(name='app_route.process')
 def process(data):
-	if data['tamplate'] == 'certificate1' or data['tamplate'] == 'certificate2' or data['tamplate'] == 'certificate3' or data['tamplate'] == 'certificate4':
+	if data['template'] == 'certificate1' or data['template'] == 'certificate2' or data['template'] == 'certificate3' or data['template'] == 'certificate4':
 		pdfGEN(template=data['template'], Certificate=data['Certificate'], FirstName=data['First'], LastName=data['Last'], product="econom")
 		if (data['printer'] == "First printer"):
 			print("OK1")
@@ -42,7 +42,7 @@ def process(data):
 				print("OK2")
 				os.system("lpr -P EPSON-2 -# 1 /tmp/{}.pdf".format(data['Certificate'] + data['template'] + "premium"))
 
-	if data['tamplate'] == 'badge1' or data['template'] == 'badge2' or data['tamplate'] == 'badge3' or data['tamplate'] == 'badge4':
+	if data['template'] == 'badge1' or data['template'] == 'badge2' or data['template'] == 'badge3' or data['template'] == 'badge4':
 		pdfGEN(template=data['template'], Certificate=data['Certificate'], FirstName=data['First'],LastName=data['Last'], product=data['product'])
 		if (data['printer'] == "First printer"):
 			print("OK1")
