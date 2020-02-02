@@ -19,7 +19,7 @@ def pdfGEN(template, Certificate, LastName, FirstName, product):
     pdfmetrics.registerFont(TTFont('OpenSans2', 'OpenSans-Bold.ttf'))
     c = canvas.Canvas('/tmp/{}.pdf'.format(str(Certificate) + str(template) + str(product)), pagesize=A4, bottomup=False)  # alternatively use bottomup=False
     width, height = A4
-    c.setFillColorRGB(255,0,255)
+    # c.setFillColorRGB(255,0,255)
 
     if template == "certificate":
         c.setFillColorRGB(255,0,255)
@@ -381,7 +381,7 @@ def pdfGEN(template, Certificate, LastName, FirstName, product):
         ptext = LastName
         styles = getSampleStyleSheet()
         style = styles["Normal"]
-        style.textColor = blue
+        style.textColor = black
         style.alignment = 1
         style.fontName = "DejaVuSans"
         style.fontSize = 23
@@ -416,7 +416,7 @@ def pdfGEN(template, Certificate, LastName, FirstName, product):
         ptext = LastName
         styles = getSampleStyleSheet()
         style = styles["Normal"]
-        style.textColor = blue
+        style.textColor = black
         style.alignment = 1
         style.fontName = "DejaVuSans"
         style.fontSize = 24
@@ -451,7 +451,7 @@ def pdfGEN(template, Certificate, LastName, FirstName, product):
         ptext = LastName
         styles = getSampleStyleSheet()
         style = styles["Normal"]
-        style.textColor = blue
+        style.textColor = black
         style.alignment = 1
         style.fontName = "DejaVuSans"
         style.fontSize = 24
@@ -486,7 +486,7 @@ def pdfGEN(template, Certificate, LastName, FirstName, product):
         ptext = LastName
         styles = getSampleStyleSheet()
         style = styles["Normal"]
-        style.textColor = blue
+        style.textColor = black
         style.alignment = 1
         style.fontName = "DejaVuSans"
         style.fontSize = 24
@@ -521,7 +521,7 @@ def pdfGEN(template, Certificate, LastName, FirstName, product):
         ptext = LastName
         styles = getSampleStyleSheet()
         style = styles["Normal"]
-        style.textColor = blue
+        style.textColor = black
         style.alignment = 1
         style.fontName = "DejaVuSans"
         style.fontSize = 24
