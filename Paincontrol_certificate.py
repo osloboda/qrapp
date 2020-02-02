@@ -19,9 +19,10 @@ def pdfGEN(template, Certificate, LastName, FirstName, product):
     pdfmetrics.registerFont(TTFont('OpenSans2', 'OpenSans-Bold.ttf'))
     c = canvas.Canvas('/tmp/{}.pdf'.format(str(Certificate) + str(template) + str(product)), pagesize=A4, bottomup=False)  # alternatively use bottomup=False
     width, height = A4
-    c.setFillColorRGB(0,0,255)
+    c.setFillColorRGB(255,0,255)
 
     if template == "certificate":
+        c.setFillColorRGB(255,0,255)
         TEXT = """дійсно брав(ла) участь у
         Всеукраїнському міждисциплінарному практично-орієнтованому тренінгу "PainControl - мистецтво
         контролювати біль" 30 січня 2020 року у м. Івано-Франківськ
@@ -75,6 +76,7 @@ def pdfGEN(template, Certificate, LastName, FirstName, product):
         c.save()
 
     if template == "certificate1":
+        c.setFillColorRGB(255,0,255)
         cert = Certificate
         if product == "econom":
             cert += "1"
@@ -149,6 +151,7 @@ def pdfGEN(template, Certificate, LastName, FirstName, product):
         c.save()
 
     if template == "certificate2":
+        c.setFillColorRGB(255,0,255)
         cert = Certificate
         if product == "econom":
             cert += "1"
@@ -223,6 +226,7 @@ def pdfGEN(template, Certificate, LastName, FirstName, product):
         c.save()
 
     if template == "certificate3":
+        c.setFillColorRGB(255,0,255)
         cert = Certificate
         if product == "econom":
             cert += "1"
@@ -297,6 +301,7 @@ def pdfGEN(template, Certificate, LastName, FirstName, product):
         c.save()
 
     if template == "certificate4":
+        c.setFillColorRGB(255,0,255)
         cert = Certificate
         if product == "econom":
             cert += "1"
@@ -372,6 +377,7 @@ def pdfGEN(template, Certificate, LastName, FirstName, product):
 
 
     if template == "badge":
+        c.setFillColorRGB(0,0,0)
         ptext = LastName
         styles = getSampleStyleSheet()
         style = styles["Normal"]
@@ -406,6 +412,7 @@ def pdfGEN(template, Certificate, LastName, FirstName, product):
         c.save()
 
     if template == "badge1":
+        c.setFillColorRGB(0,0,0)
         ptext = LastName
         styles = getSampleStyleSheet()
         style = styles["Normal"]
@@ -440,6 +447,7 @@ def pdfGEN(template, Certificate, LastName, FirstName, product):
         c.save()
 
     if template == "badge2":
+        c.setFillColorRGB(0,0,0)
         ptext = LastName
         styles = getSampleStyleSheet()
         style = styles["Normal"]
@@ -474,6 +482,7 @@ def pdfGEN(template, Certificate, LastName, FirstName, product):
         c.save()
 
     if template == "badge3":
+        c.setFillColorRGB(0,0,0)
         ptext = LastName
         styles = getSampleStyleSheet()
         style = styles["Normal"]
@@ -508,6 +517,7 @@ def pdfGEN(template, Certificate, LastName, FirstName, product):
         c.save()
 
     if template == "badge4":
+        c.setFillColorRGB(0,0,0)
         ptext = LastName
         styles = getSampleStyleSheet()
         style = styles["Normal"]
@@ -549,7 +559,7 @@ def pdfGEN(template, Certificate, LastName, FirstName, product):
             ptext = "ECONOM"
             p = Paragraph(ptext,
                           style=ParagraphStyle(name='Table', fontName='DejaVuSans', fontSize=14, aligment=TA_CENTER,
-                                               leading=37, textColor=colors.blue))
+                                               leading=37, textColor=colors.black))
             p.wrapOn(c, 50 * mm, 100 * mm)  # size of 'textbox' for linebreaks etc.
             p.drawOn(c, 40 * mm, 141 * mm)
 
